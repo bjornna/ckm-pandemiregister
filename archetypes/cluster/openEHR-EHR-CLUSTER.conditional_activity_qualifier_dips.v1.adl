@@ -1,0 +1,79 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.conditional_activity_qualifier_dips.v1
+
+concept
+	[at0000]	-- Conditional activity qualifier dips
+language
+	original_language = <[ISO_639-1::nb]>
+description
+	original_author = <
+		["name"] = <"Morten Pavicevic Hørthe">
+		["email"] = <"mho@dips.no">
+		["organisation"] = <"DIPS AS">
+		["date"] = <"2020-04-20">
+	>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Registrere detaljert informasjon om tilstander i sammenheng med et individuelt eller selvrapportert registreringsskjema.">
+			use = <"Brukes i sammenheng med openEHR-EHR-OBSERVATION.condition_screening.v0 for å registrere detaljert informasjon i forhold til aktivitet knyttet mot en spesifikk tilstand.">
+			misuse = <"Skal ikke brukes for å registrere spesifikke detaljer om en tilstand som en del av en typisk klinisk konsultasjon. Bruk EVALUATION.problem_diagnosis for dette formålet.">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"E3725E7744F5025AB484CF1A6B986AE8">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Conditional activity qualifier dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Beskrivelse av sammenheng mellom aktivitet og symptomer
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0002, 	-- Symptomer ved høy aktivitet/anstrengelse
+							at0003, 	-- Symptomer ved moderat aktivitet
+							at0004, 	-- Symptomer ved lett aktivitet
+							at0005]	-- Symptomer i hvile
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Conditional activity qualifier dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Beskrivelse av sammenheng mellom aktivitet og symptomer">
+					description = <"Beskrivelse av hvordan tilstanden er under aktivitet">
+				>
+				["at0002"] = <
+					text = <"Symptomer ved høy aktivitet/anstrengelse">
+					description = <"Symptomer oppstår ved høy aktivitet/anstrengelse">
+				>
+				["at0003"] = <
+					text = <"Symptomer ved moderat aktivitet">
+					description = <"Symptomer oppstår ved moderat aktivitet">
+				>
+				["at0004"] = <
+					text = <"Symptomer ved lett aktivitet">
+					description = <"Symptomer oppstår ved lett aktivitet">
+				>
+				["at0005"] = <
+					text = <"Symptomer i hvile">
+					description = <"Symptomer oppstår kun i hvile">
+				>
+			>
+		>
+	>
